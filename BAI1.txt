@@ -1,0 +1,12 @@
+Bài 1: Khởi tạo cấu trúc dự án bằng terminal
+
+Phần 1:phân tích lỗi( Chỉ ra ít nhất 3 lỗi sai và giải thích thông báo lỗi trong chuỗi lệnh của Nam )
+  - Thứ nhất: lệnh {mkdir shopee projects} bị lỗi vì trong phần mền của windows powershell là nó không nhận 2 biến số cùng 1 lúc mà nó chỉ nhận 1 biến số thôi.
+  - Thứ hai: Lệnh {cd Shopee Projects} bị lỗi vì Shopee Projects có khoảng trắng nhưng không được đặt trong dấu ngoặc kép. PowerShell tiếp tục tách thành 2 phần nên không xác định đúng thư mục cần chuyển vào.
+  - Thứ ba: Lệnh {mkdir src\assets\images} có thể bị lỗi vì lúc này thư mục src chưa được tạo thành công. Khi đường dẫn cha không tồn tại thì PowerShell không thể đi tiếp đến assets\images, nên báo Cannot find path '...' because it does not exist.
+Thứ tư: Lệnh Copy-Item src -Destination src-backup -Recurse phụ thuộc vào thư mục src. Nếu bước tạo src trước đó bị lỗi thì src không tồn tại, nên lệnh sao chép cũng báo lỗi Cannot find path.
+Phần 2: Chuỗi lệnh đúng trong 3 dòng
+Để vẫn đảm bảo đúng 3 dòng lệnh, có thể viết:
+mkdir "Shopee Projects"
+cd "Shopee Projects"
+mkdir src; mkdir src\assets; mkdir src\assets\images; Copy-Item src -Destination src-backup -Recurse
